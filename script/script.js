@@ -1,5 +1,7 @@
 import { loadVowels, loadConsonents, loadData } from "./loadData.js";
 
+
+
 window.addEventListener("load", () => {
   const completeVowels = [];
   const completeConsonents = [];
@@ -28,7 +30,11 @@ window.addEventListener("load", () => {
 
   loadData().then((data) => {
     completeData.push(...data);
-    console.log("All Data", data)
-    
-  })
+    console.log("All Data", data);
+  });
+
+
+  
 });
+
+
