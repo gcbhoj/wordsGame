@@ -15,12 +15,27 @@ export async function loadVowels() {
 //fuction that fetches consonents from the jsondata
 export async function loadConsonents() {
   try {
-    const response = await fetch("https://raw.githubusercontent.com/gcbhoj/SBDatabase/main/consonents.json");
+    const response = await fetch(
+      "https://raw.githubusercontent.com/gcbhoj/SBDatabase/main/consonents.json"
+    );
 
     const jsonData = await response.json();
 
     return jsonData;
   } catch (error) {
     console.log("Error Fetching File");
+  }
+}
+
+export async function loadData() {
+  try {
+    const response = await fetch(
+      "https://raw.githubusercontent.com/gcbhoj/SBDatabase/main/DataBase.json"
+    );
+    const jsonData = await response.json();
+
+    return jsonData;
+  } catch (error) {
+    console.log("Error Fetching File.");
   }
 }

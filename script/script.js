@@ -1,8 +1,9 @@
-import { loadVowels, loadConsonents } from "./loadData.js";
+import { loadVowels, loadConsonents, loadData } from "./loadData.js";
 
 window.addEventListener("load", () => {
   const completeVowels = [];
   const completeConsonents = [];
+  const completeData = [];
   //loading all vowels from database
   loadVowels().then((vowels) => {
     completeVowels.push(...vowels);
@@ -22,4 +23,12 @@ window.addEventListener("load", () => {
       console.log("consonets", item.alphabet);
     });
   });
+
+  //loading all Data
+
+  loadData().then((data) => {
+    completeData.push(...data);
+    console.log("All Data", data)
+    
+  })
 });
