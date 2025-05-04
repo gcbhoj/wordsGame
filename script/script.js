@@ -1,25 +1,25 @@
+import { loadVowels, loadConsonents } from "./loadData.js";
+
 window.addEventListener("load", () => {
-    let completeData = [];
-    let firstAlphabetsArray =[]
+  const completeVowels = [];
+  const completeConsonents = [];
+  //loading all vowels from database
+  loadVowels().then((vowels) => {
+    completeVowels.push(...vowels);
 
-  fetch(
-    "https://raw.githubusercontent.com/gcbhoj/SBDatabase/main/DataBase.json"
-  )
-    .then((response) => response.json())
-    .then((jsonData) => {
-      console.log("JSON DATA", jsonData);
-
-      if (jsonData != null) {
-        completeData.push(...jsonData);
-
-          for (let i = 0; i < completeData.length; i++) {
-              const items = completeData[i].types;
-            console.log("Complete Data", completeData[i].category);
-              for (let j = 0; j < items.length; j++){
-                  console.log("starting Alphabet", items[j].starting_alphabet)
-              }
-
-        }
-      }
+    console.log("Loaded Vowels:", completeVowels);
+    //accessing each item from the complete vowels array
+    completeVowels.forEach((item) => {
+      console.log("Vowels", item.alphabet);
     });
+  });
+  //loading all consonets
+  loadConsonents().then((consonents) => {
+    completeConsonents.push(...consonents);
+    console.log("Loaded Consonents", consonents);
+    //accessing each item from the complete consonents array
+    completeConsonents.forEach((item) => {
+      console.log("consonets", item.alphabet);
+    });
+  });
 });
