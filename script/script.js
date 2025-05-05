@@ -1,23 +1,23 @@
-import { loadVowels } from "./loadData.js";
+import { loadVowels,loadData } from "./loadData.js";
 
 const completeVowels = [];
+const completeData = [];
 
 window.addEventListener("DOMContentLoaded", () => {
   const vowelPagesContainer = document.querySelector(".pages");
-  let pageNumber = 1; // Starting from 3 since 1 & 2 are already used
-
+//loading all vowels
   loadVowels().then((vowels) => {
     completeVowels.push(...vowels);
-
+    // reading the first vowel
     const firstVowel = completeVowels[0];
     const firstPage = document.getElementById("three_four_page");
-
+    // updating the first vowel to the flipbook
     if (firstPage) {
       var alphabetPronounciation = document.getElementById(
         "alphabet_Pronounciation"
       );
       alphabetPronounciation.src = firstVowel.pronounciation;
-      alphabetPronounciation.play()
+     // alphabetPronounciation.play()
       document.getElementById("alphabetDisplay").innerHTML =
         firstVowel.alphabet;
 
@@ -29,7 +29,7 @@ window.addEventListener("DOMContentLoaded", () => {
       document.getElementById("alphabet_Pronounciation").src =
         " No Audio Available";
     }
-
+    // updating the flipbook with rest of the vowels
     for (let i = 1; i < completeVowels.length; i++) {
       const vowels = completeVowels[i];
       const vowelsDisplay = document.createElement("div");
@@ -45,9 +45,6 @@ window.addEventListener("DOMContentLoaded", () => {
     <div class="third_page-head">
       <h3 id="alphabetDisplay">${vowels.alphabet}</h3>
       <span class="material-icons-outlined">hearing </span>
-      <audio id="alphabet_Pronounciation" src="${
-        vowels.pronounciation
-      }"></audio>
       <img
         id="imageDisplay" src="${vowels.image}"  
         alt="${vowels.alphabet}"
@@ -66,4 +63,10 @@ window.addEventListener("DOMContentLoaded", () => {
       vowelPagesContainer.appendChild(vowelsDisplay);
     }
   });
+  //loading data for words
+  loadData().then((data) => {
+    completeData.push(...data)
+    console.log("Complete Data", completeData)
+})
+
 });
