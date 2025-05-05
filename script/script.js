@@ -1,11 +1,11 @@
-import { loadVowels,loadData } from "./loadData.js";
+import { loadVowels, loadData } from "./loadData.js";
 
 const completeVowels = [];
 const completeData = [];
 
 window.addEventListener("DOMContentLoaded", () => {
   const vowelPagesContainer = document.querySelector(".pages");
-//loading all vowels
+  //loading all vowels
   loadVowels().then((vowels) => {
     completeVowels.push(...vowels);
     // reading the first vowel
@@ -13,11 +13,6 @@ window.addEventListener("DOMContentLoaded", () => {
     const firstPage = document.getElementById("three_four_page");
     // updating the first vowel to the flipbook
     if (firstPage) {
-      var alphabetPronounciation = document.getElementById(
-        "alphabet_Pronounciation"
-      );
-      alphabetPronounciation.src = firstVowel.pronounciation;
-     // alphabetPronounciation.play()
       document.getElementById("alphabetDisplay").innerHTML =
         firstVowel.alphabet;
 
@@ -65,8 +60,10 @@ window.addEventListener("DOMContentLoaded", () => {
   });
   //loading data for words
   loadData().then((data) => {
-    completeData.push(...data)
-    console.log("Complete Data", completeData)
-})
+    completeData.push(...data);
+    console.log("Complete Data", completeData);
+  });
+
 
 });
+
